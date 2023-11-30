@@ -1,0 +1,42 @@
+server:
+  port: ${portRttBatch}
+
+spring:
+  data:
+    mongodb:
+      authentication-database: ${authenticationdatabaseMongo}
+      username: ${usrMongoCifras}
+      password: ${pwMongoCifras}
+      database: ${databaseMongo}
+      port: ${portMongo}
+      host: ${hostMongo}
+  datasource:
+    url: ${oracleUrl}
+    username: ${oracleUsername}
+    password: ${oraclePassword}    
+    driver-class-name: oracle.jdbc.OracleDriver
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  batch:
+    job:
+      enabled: false
+  application:
+    name: btpmc-rtt
+logging:
+  file: ${fileLogBatchRtt}
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    com.demo: INFO
+    org.hibernate.SQL: INFO
+
+management:
+  endpoint:
+    restart:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: restart,health
